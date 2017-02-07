@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "翻译",
+  "version": "1.0",
+  "description": "翻译",
+  "browser_action": {
+    "default_icon": {
+        "19": "img/icon.png"
+      },
+      "default_title": "测试",
+      "default_popup": "popup.html"
+    },
+  "permissions": [
+    "*://fanyi.baidu.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*","https://*/*"],
+      "js": ["js/translate.js"]
+    }
+  ]
+}
