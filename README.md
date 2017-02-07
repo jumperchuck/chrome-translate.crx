@@ -1,1 +1,1 @@
-# chrome-
+# chrome-translate.crx
