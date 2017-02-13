@@ -1,1 +1,1 @@
-# chrome-translate.crx
+添加到chrome扩展程序里,选中页面上的文字即可看到翻译内容
