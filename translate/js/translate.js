@@ -40,6 +40,7 @@ img.onmouseover = function(){
 img.onmouseout = function(){
     this.style.transform = 'scale(1)';
 }
+var onOff = false;
 document.onmouseup = function(e){
     var e = e || event;
     var text = window.getSelection();
@@ -62,9 +63,10 @@ document.onmouseup = function(e){
                 newDiv.style.top = e.clientY + 15 + 'px';
             }
         });
-    }
-    else{
+        onOff = true;
+    } else if(onOff){
         document.body.removeChild(newDiv);
+        onOff = false;
     }
 }
 function httpRequest(url,callback){
