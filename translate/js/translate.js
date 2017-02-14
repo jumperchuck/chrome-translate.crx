@@ -1,4 +1,4 @@
-var result = null;
+﻿var result = null;
 var newDiv = document.createElement('div');
 newDiv.style.padding = '2px 6px';
 newDiv.style.background = '#fff';
@@ -9,6 +9,7 @@ newDiv.style.fontSize = '14px';
 newDiv.style.borderRadius = '3px';
 newDiv.style.lineHeight = '40px';
 newDiv.style.textAlign = 'left';
+newDiv.style.transition = 'all 1s';
 var img = document.createElement('img');
 img.id = 'ck';
 img.alt = '帅哥';
@@ -39,14 +40,13 @@ img.onmouseover = function(){
 img.onmouseout = function(){
     this.style.transform = 'scale(1)';
 }
-var onOff = false;
 document.onmouseup = function(e){
     var e = e || event;
     var text = window.getSelection();
     if( text != '' ){
-        conText.innerHTML = '';
-        document.body.appendChild(newDiv);
+        // conText.innerHTML = '';
         baiduFanyi(text.toString(),function(){
+            document.body.appendChild(newDiv);
             var l = e.clientX + newDiv.offsetWidth;
             var t = e.clientY + newDiv.offsetHeight;
             if(document.body.clientWidth > newDiv.offsetWidth && l > document.body.clientWidth){
@@ -62,13 +62,9 @@ document.onmouseup = function(e){
                 newDiv.style.top = e.clientY + 15 + 'px';
             }
         });
-        onOff = true;
     }
     else{
-        if(onOff){
-            document.body.removeChild(newDiv);
-            onOff = false;
-        }
+        document.body.removeChild(newDiv);
     }
 }
 function httpRequest(url,callback){
