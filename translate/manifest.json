@@ -7,7 +7,7 @@
     "default_icon": {
         "19": "img/icon.png"
       },
-      "default_title": "测试",
+      "default_title": "翻译",
       "default_popup": "popup.html"
     },
   "permissions": [

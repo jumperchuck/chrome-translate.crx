@@ -7,19 +7,72 @@
             padding: 0;
         }
         body{
-            width: 150px;
+            width: 200px;
         }
         div {
             font-size: 16px;
             text-align: center;
-            padding: 10px;
+        }
+        p {
+            line-height: 2;
+            margin: 10px 0;
+        }
+        #inp {
+            display: inline-block;
+            height: 22px;
+            width: 120px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            box-shadow: 0 0 1px #ccc;
+        }
+        #inp:focus {
+            border: 1px solid #7fa2c3;
+            box-shadow: 0 0 5px #999;
+        }
+        #btn {
+            display: inline-block;
+            height: 22px;
+            width: 50px;
+            margin-left: -1px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 0 1px #ccc;
+        }
+        #btn:hover {
+            border: 1px solid #7fa2c3;
+            box-shadow: 0 0 5px #999;
+        }
+        #bg {
+            display: inline-block;
+            height: 15px;
+            width: 30px;
+            background-color: #7fa2c3;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #999 inset;
+            transition: background-color 1s;
+        }
+        #bg:hover {
+            cursor:pointer;
+        }
+        #ball {
+            float: left;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #999;
+            transition: all 1s;
         }
     </style>
 </head>
 <body>
 <div id="div">
     <p>选中即可翻译</p>
-    <p>关不掉的放心</p>
+    <p><div id="bg"><span id="ball"></span></div></p>
+    <p><input type="text" id="inp"><button id="btn">翻译</button></p>
+    <p id="result"></p>
 </div>
 <script src="js/test.js"></script>
 </body>
