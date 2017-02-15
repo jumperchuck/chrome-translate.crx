@@ -25,6 +25,14 @@ window.onload = function(){
             result.innerHTML = data;
         });
     }
+    inp.onkeypress = function(e){
+        var e = e || event;
+        if(e.keyCode==13){
+            baiduFanyi(this.value,function(data){
+                result.innerHTML = data;
+            });
+        }
+    }
 }
 function httpRequest(url,callback){
     var xhr = new XMLHttpRequest();

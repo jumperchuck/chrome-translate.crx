@@ -1,4 +1,4 @@
-﻿var result = null;
+var result = null;
 var newDiv = document.createElement('div');
 newDiv.style.padding = '2px 6px';
 newDiv.style.background = '#fff';
@@ -9,7 +9,7 @@ newDiv.style.fontSize = '14px';
 newDiv.style.borderRadius = '3px';
 newDiv.style.lineHeight = '40px';
 newDiv.style.textAlign = 'left';
-newDiv.style.transition = 'all 1s';
+
 var img = document.createElement('img');
 img.id = 'ck';
 img.alt = '帅哥';
@@ -18,7 +18,7 @@ img.style.marginRight = '5px';
 img.style.width = '40px';
 img.style.verticalAlign = 'middle';
 img.style.borderRadius = '50%';
-img.style.transition = 'transform 1s';
+img.style.transition = 'transform 0.5s';
 
 var span = document.createElement('span');
 span.innerHTML = '译:';
@@ -35,7 +35,7 @@ newDiv.onmouseup = function(e){
     e.cancelBubble = true;
 }
 img.onmouseover = function(){
-    this.style.transform = 'scale(3)';
+    this.style.transform = 'scale(1.6)';
 }
 img.onmouseout = function(){
     this.style.transform = 'scale(1)';
@@ -45,7 +45,6 @@ document.onmouseup = function(e){
     var e = e || event;
     var text = window.getSelection();
     if( text != '' ){
-        // conText.innerHTML = '';
         baiduFanyi(text.toString(),function(){
             document.body.appendChild(newDiv);
             var l = e.clientX + newDiv.offsetWidth;
