@@ -45,7 +45,7 @@ function httpRequest(url,callback){
     xhr.send();
 }
 function baiduFanyi(text,callback) {
-    var url = 'https://fanyi.baidu.com/v2transapi?query=' + encodeURIComponent(text) + '&lang=auto';
+    var url = 'https://fanyi.baidu.com/v2transapi?query=' + encodeURIComponent(text) + '&from=auto&to=en';
     httpRequest(url,function(r){
         result = JSON.parse(r);
         callback && callback(result.trans_result.data[0].dst);

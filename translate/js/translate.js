@@ -1,31 +1,46 @@
+HTMLElement.prototype.css = function(name,value){
+    if(arguments.length == 0){
+        return getComputedStyle(this);
+    }else if(arguments.length == 1 && typeof name === 'string'){
+        return getComputedStyle(this)[name];
+    }else if(arguments.length == 2 && typeof name === 'string'){
+        this.style[name] = value;
+    }else if(typeof name === 'object'){
+        for(var key in name){
+            this.style[key] = name[key];
+        }
+    }
+}
 var result = null;
 var newDiv = document.createElement('div');
-newDiv.style.padding = '2px 6px';
-newDiv.style.background = '#fff';
-newDiv.style.boxShadow = '0px 0px 5px #999';
-newDiv.style.position = 'fixed';
-newDiv.style.zIndex = '1000';
-newDiv.style.fontSize = '14px';
-newDiv.style.borderRadius = '3px';
-newDiv.style.lineHeight = '40px';
-newDiv.style.textAlign = 'left';
+newDiv.css({
+    padding:'2px 6px',
+    background:'#fff',
+    boxShadow:'0px 0px 5px #999',
+    position:'fixed',
+    zIndex:'1000',
+    fontSize:'14px',
+    borderRadius:'3px',
+    lineHeight:'40px',
+    textAlign:'left'
+});
 
 var img = document.createElement('img');
-img.id = 'ck';
-img.alt = '帅哥';
 img.src = 'https://jumperchuck.github.io/img/me.jpg';
-img.style.marginRight = '5px';
-img.style.width = '40px';
-img.style.verticalAlign = 'middle';
-img.style.borderRadius = '50%';
-img.style.transition = 'transform 0.5s';
+img.css({
+    marginRight:'5px',
+    width:'40px',
+    verticalAlign:'middle',
+    borderRadius:'50%',
+    transition:'transform 0.5s'
+});
 
 var span = document.createElement('span');
 span.innerHTML = '译:';
-span.style.color = '#999';
+span.css('color','#999');
 
 var conText = document.createElement('span');
-conText.style.color = '#000';
+conText.css('color','#000');
 
 newDiv.appendChild(img);
 newDiv.appendChild(span);
@@ -35,12 +50,13 @@ newDiv.onmouseup = function(e){
     e.cancelBubble = true;
 }
 img.onmouseover = function(){
-    this.style.transform = 'scale(1.6)';
+    this.css('transform','scale(1.6)');
 }
 img.onmouseout = function(){
-    this.style.transform = 'scale(1)';
+    this.css('transform','scale(1)');
 }
 var onOff = false;
+
 document.onmouseup = function(e){
     var e = e || event;
     var text = window.getSelection();
@@ -51,19 +67,19 @@ document.onmouseup = function(e){
             var t = e.clientY + newDiv.offsetHeight;
             if(document.body.clientWidth > newDiv.offsetWidth && l > document.body.clientWidth){
                 l = e.clientX - (l - document.body.clientWidth);
-                newDiv.style.left = l + 'px';
+                newDiv.css('left',l+'px');
             }else {
-                newDiv.style.left = e.clientX + 'px';
+                newDiv.css('left',e.clientX+'px');
             }
             if(document.body.clientHeight > newDiv.offsetHeight && t > document.body.clientHeight){
                 t = e.clientY - (t-document.body.clientHeight);
-                newDiv.style.top = t + 15 + 'px';
+                newDiv.css('top',t+15+'px');
             }else {
-                newDiv.style.top = e.clientY + 15 + 'px';
+                newDiv.css('top',e.clientY+15+'px');
             }
         });
         onOff = true;
-    } else if(onOff){
+    }else if(onOff){
         document.body.removeChild(newDiv);
         onOff = false;
     }
@@ -82,7 +98,7 @@ function httpRequest(url,callback){
     xhr.send();
 }
 function baiduFanyi(text,callback) {
-    var url = 'https://fanyi.baidu.com/v2transapi?query=' + encodeURIComponent(text) + '&lang=auto';
+    var url = 'https://fanyi.baidu.com/v2transapi?query=' + encodeURIComponent(text) + '&from=auto&to=en';
     httpRequest(url,function(r){
         result = JSON.parse(r);
         conText.innerHTML = result.trans_result.data[0].dst;
